@@ -1,1 +1,1 @@
-web: gunicorn emma.emma.wsgi 
+web: gunicorn emma.wsgi 

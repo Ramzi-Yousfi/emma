@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-dhmn&_psv&#t@^6d0&t2a12t^)3n*d2i(ttext)b!n9wj#y0p5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://emmaphotography.herokuapp.com",'localhost']
+ALLOWED_HOSTS = ["https://emmaphotography.herokuapp.com","localhost"]
 
 
 # Application definition
