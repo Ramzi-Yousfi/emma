@@ -1,1 +1,1 @@
-web: gunicorn emma.wsgi --log-file=-
+web: gunicorn emma.wsgi:application --preload -b 0.0.0.0:5000
