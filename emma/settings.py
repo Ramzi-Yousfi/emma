@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from ast import Str
 from pathlib import Path
 from tkinter import E
 import os
@@ -81,7 +82,7 @@ WSGI_APPLICATION = 'emma.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'emma',
+        'NAME': str('emma'),
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
