@@ -1,0 +1,71 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS  -->
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+<title>{%block title%} {% endblock %} </title>
+
+<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar_">
+            <a href="#" class="logo"><img src="{% static 'images/logo.png' %}" alt=""></a>
+            <ul class="nav_links">
+                <li><a href="/">HOME</a></li>
+                <li class="galeries ">
+                    <a  class="isDisabled sub_btn" >GALERIES <i class="las la-plus"></i></a>
+                    <ul class="sub showing">
+                        <li><a href="/galerie/femmes">FEMMES</a></li>
+                        <li><a href="">HOMMES</a></li>
+                        <li><a href="">Beauté + CLOSE UPS</a></li>
+                        <li><a href="">TEST AGENCE</a></li>
+                        <li><a href="">CORPORATE</a></li>
+                        <li><a href="">Extérieur</a></li>
+                        <li><a href="">duos</a></li>
+                        <li><a href="">sport</a></li>
+                        <li><a href="">créateurs</a></li>
+                    </ul>
+                </li>
+                <li><a href="/presentation">PRESTATIONS </a></li>
+                <li><a href="/publication">PUBLICATIONS</a></li>
+                <li><a href="/livre-or">LIVRE D'OR </a></li>
+                <li><a href="/contact">CONTACT</a></li>
+            </ul>
+                <div class="menu-humberger">
+                    <span class="menu1"><i class="las la-bars "></i></span>
+                    <span class="menu2"><i class="las la-times "></i></span>
+                </div>
+                
+            </nav>
+                
+    </header>
+   
+        {% block content %}
+        {% endblock %}
+        
+  <footer>
+      <div class="footer">
+          <a href="#"><i class="lab la-facebook"></i></a>
+          <a href="#"><i class="lab la-500px"></i></a>
+            <a href="#"><i class="lab la-instagram"></i></a>
+            <a href="#"><i class="lab la-pinterest"></i></a>
+      </div>
+  </footer>
+   
+</body>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+        crossorigin="anonymous"></script>
+<script src=" {% static 'js/index.js' %} "></script>
+</html>

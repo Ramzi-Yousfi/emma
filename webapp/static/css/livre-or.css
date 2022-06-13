@@ -1,0 +1,22 @@
+
+.form-add{
+    width: 100%;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/add.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+
+
+.block-btn-comment{
+ height:20vh;
+ display:flex;
+justify-content:flex-end;
+align-items:center;
+}

@@ -1,0 +1,21 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/livre-or.css' %}">
+
+<div>
+    <div class="heea">
+
+    </div>
+<div class="container-fluid form-add">
+    <div class="row mt-5">
+        <form action="" method="post">
+           {% csrf_token %}
+           {{form}}
+           <input type="submit" value="Envoyer" class="btn btn-dark mt-3">
+        </form>
+        </div>
+</div>
+
+{% endblock %}

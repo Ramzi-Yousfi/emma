@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/publication.css' %}">
+<div>
+    <div class="heea">
+
+    </div>
+    <div class="container">
+        {% for publication in publications %}
+            <div class="row"></div>
+            <h5 class="card-title">{{ publication.title }}</h5>
+            <p class="card-text">{{ publication.description }}</p>
+                    <div class="row text-center">
+                        {% for photos in publication.photos.all %}
+                            
+                            {% if publication.photos.all.count  == 1 %}
+                                <div class="col-md-12">
+                                    <img src="{{ photos.get_photo_url }}" class="img-fluid" alt="Responsive image">
+                                </div>
+                            {% elif publication.photos.all.count  ==  2 %}
+                                <div class="col-md-6">
+                                    <img src="{{photos.get_photo_url}}">
+                                </div>
+                            {% elif publication.photos.all.count  > 3 %}
+                                <div class="col-md-3">
+                                    <img src="{{photos.get_photo_url}}">
+                                </div>
+                            {% else %}
+                                <div class="col-md-3">
+                                    <img src="{{photos.get_photo_url}}">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+        {% endfor %}
+    </div>
+</div>
+    
+{% endblock %}

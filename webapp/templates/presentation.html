@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div >
+    <div class="heea">
+
+    </div>
+    
+    <div class="container mt-5">
+        <div class="row">
+                {% for card in cards %}
+                    <div class="col-md-3">
+                        <img class="card-img-top" src="{{card.get_photo_url}}" alt="">
+                        <div class="card">
+                            <div class="card-body">
+                                <p class="card-text">{{ card.card_description | linebreaks }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            <div class="line mt-5 mb-5"></div>
+            <div class="container">
+                <h2 >Photo studio, en extérieur ou dans différents lieux parisiens et banlieue privés</h2>
+                <div class="text-center mb-5">
+                    <p class="">{{presentation.adresse | linebreaks}}</p>
+                    <strong><p>Réservez votre séance photo – Demande d’informations</p></strong>
+                    <p>Pour toute demande de réservation, veuillez remplir ce  <a href="/contact" class="btn btn-outline-success pt-1">formulaire</a>  </p>
+                </div>
+                </div>
+                
+        </div>
+    </div>
+   
+
+</div>
+
+{% endblock %}

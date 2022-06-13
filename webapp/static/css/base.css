@@ -1,0 +1,254 @@
+* {
+    margin: 0 ;
+    padding: 0 ;
+    text-decoration: none;
+    list-style: none;
+    
+}
+a {
+    text-decoration: none !important;
+}
+
+
+ 
+.navbar_ a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: 750;
+}
+
+.galeries i {
+    visibility: hidden;
+    font-size: smaller;
+}
+.menu-humberger{
+    display: none;
+}
+.logo img{
+    font-size: 30px;
+}
+nav{
+    z-index: 100;
+}
+
+@media screen and (min-width: 768px) {
+    .navbar_ {
+        position:absolute;
+        top:20px;
+        padding: 0px 15px;
+        display: flex;
+        justify-content: space-between;
+        box-sizing: border-box;
+        width: 100%;
+        align-items: center;
+    }
+    .nav_links{
+        display : flex;
+        justify-content: space-between;
+        height: 50px;
+    }
+    .nav_links li {
+        padding: 0px 10px;
+    }
+    .galeries:hover > .sub{
+    visibility: visible;
+    opacity:1;
+    top : 60px;
+    }
+    .sub{
+        position : absolute;
+        top : 100px;
+        background-color: rgba(0, 0, 0, 0.612);
+        margin-left: -61px;
+        padding: 10px;
+        text-align: start;
+        box-sizing: border-box;
+        text-align: center;
+        border-radius: 10px;
+        visibility: hidden;
+        opacity:0;
+        transition: .2s ;
+        
+    }
+    .isDisabled {
+        color: currentColor;
+        cursor: default;
+        pointer-events: none;
+        text-decoration: none;
+    }
+    .sub li{
+        position: relative;
+        padding:8px 10px;
+        width: 100%;
+        text-transform: uppercase;
+    }
+    .sub li :hover{
+        text-shadow: 0 0 10px rgb(255, 255, 255);
+    }
+    .galeries{
+        padding-bottom: 20px;
+    }
+    ol, ul {
+        padding-left: 0 ;
+    }
+ 
+
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 768px) {
+    .navbar_ {
+        padding: 0;
+    }
+    .logo{
+       
+        position: absolute;
+        left: 20px;
+        top: 20px;
+    }
+    .menu-humberger{
+        display: block !important;
+        color: rgb(255, 255, 255);
+        font-size: 30px;
+        z-index: 3;
+        position: absolute;
+        top: 20px;
+        right : 20px;
+    }
+    .menu-humberger:hover{
+        cursor: pointer;
+    }
+    .nav_links {
+        position: absolute;
+        top: 0;
+        left:-100%;
+        width: 100%;
+        min-height: 300vh;
+        background: rgba(42, 42, 42,0.20);
+        backdrop-filter: blur(10px);    
+        text-align: center;
+        transition: all 0.5s ease-in-out;
+        padding-top: 10vh;
+    }
+    .open{
+        left: 0;
+        transition: all 0.5s ease-in-out;
+    }
+    .nav_links li {
+        margin : 15px 0;
+        font-size: 36px;
+        
+    }
+    .menu1{
+        display: block ;
+    }
+    .menu2{
+        display: none;
+    }
+    .hide{
+        display: none;
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1) 4s;
+    }
+    .show{
+        display: block;
+        transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.4s;
+    }
+    .sub{
+        display: block;
+        background-color: #181818b7;
+        margin-left: -61px;
+        padding-bottom: 2vh;
+        display: block;
+        
+        
+    }
+    .sub li a {
+        font-size: 23px !important;
+        text-transform: uppercase;
+
+    }
+    .sub li a:hover{
+        text-shadow: 0 0 10px rgb(255, 255, 255);
+    }
+   .sub li  {
+        margin: 0 !important;
+        
+    }
+    .galeries i {
+        visibility: visible;
+    }
+    .showing { display: none; }
+
+    .isDisabled {
+        color: currentColor;
+        cursor: default;
+        text-decoration: none;
+      }
+  
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+footer{
+    background: #181818;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%;
+    height: 25vh;
+}
+footer a {
+   
+    padding: 6px;
+    
+    
+}
+footer i:hover {
+    color: rgb(198, 0, 0);
+    text-decoration: none;
+}
+footer i{
+    font-size: 30px;
+    color: rgb(0, 0, 0);
+    background-color: azure;
+    border-radius: 150px;
+    padding: 5px;
+}
+.heea{
+    background-color: #000000;
+    height: 15vh;
+    width: 100%;
+}
+
+.line{
+    background-color: rgb(58, 57, 57);
+    height: 1px;
+    width: 100%;
+    
+}

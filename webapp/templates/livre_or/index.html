@@ -1,0 +1,39 @@
+{% extends "../base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/livre-or.css' %}">
+
+<div class="container"></div>
+    <div class="heea">
+
+    </div>
+
+    <div class="container block-btn-comment ">
+        <a href="{% url 'webapp-livre-add' %}" class="btn btn-dark  btn-comment">laisser un commentaire <i class="strong las la-plus"></i></a>
+    </div>
+    <div class="container mb-3">
+        <div class="div m-4">
+        {% for message in messages %}
+        <div class="alert-success alert-dismiss p-3 text-center">
+            <i class="lar la-heart"></i>
+            {{ message }}
+            <i class="lar la-heart"></i>
+        </div>
+        {% endfor %}
+        </div>
+      
+        {% for comment in comments %}
+        {% if comment.status == True %}
+            <div class="row text-center ">
+                <p>" {{comment.message}} "</p>
+                <h6> - {{comment.nom}} {{comment.date_update | date:"Y"}}</h6> 
+            </div>
+            <div class="line mt-5 mb-5"></div>
+        {% endif %}
+        {% endfor %}
+    </div>
+
+</div>
+
+{% endblock %}

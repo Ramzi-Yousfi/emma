@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/contact.css' %}">
+
+<div class="contact-head">
+ <div class="text-header-contact">CONTACT</div>
+</div>
+<div class=" container presentation-auteur">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="{% static 'images/auteur.jpeg' %}" alt=""">
+        </div>
+        <div class="col-md-7 presentation">
+            <p class="p1">{{presentation.description_one}}</p>
+            <p class="p2">{{presentation.description_two}}</p>
+         
+        </div>
+    </div>
+</div>
+<div class="container ">
+    <div class="row">
+    <div class="col-md-6">
+   
+        <div class=" presentation-contact">
+            {% if message %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% if error %}
+            <div class="alert alert-danger text-center">
+                {{ error }}
+            </div>
+            {% endif %}
+            <h4>Photo studio, en extérieur ou dans différents lieux parisiens et banlieue privés</h4>
+            <span class="text-center ">{{presentation.adresse}}</span>
+            <h6>Réservez votre séance photo – Demande d’informations</h6>
+            <p> Pour toute demande de réservation, veuillez remplir ce formulaire. </p>
+        </div>
+   
+    </div>
+    <div class="col-md-6">
+        
+        <form class="" method="post" >
+            {% csrf_token %}
+            {{ form.nom.label }}
+            {{ form.nom }}
+            {{ form.email.label }}
+            {{ form.email }}
+            {{ form.sujet.label }}
+            {{ form.sujet }}
+            {{ form.message.label }}
+            {{ form.message }}
+
+        
+            <button type="submit" class="btn btn-dark mt-4 mb-4 text-center">Envoyer</button>
+        </form>
+    </div>
+</div>
+    
+
+
+
+</div>
+
+{% endblock %}
