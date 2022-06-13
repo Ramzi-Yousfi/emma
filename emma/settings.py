@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-from tkinter import E
+from tkinter import *
 import os
 import django_heroku
 import django
