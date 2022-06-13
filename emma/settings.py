@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
-from ast import Str
 from pathlib import Path
 from tkinter import E
 import os
@@ -30,7 +29,7 @@ SECRET_KEY = 'django-insecure-dhmn&_psv&#t@^6d0&t2a12t^)3n*d2i(ttext)b!n9wj#y0p5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://emmaphotography.herokuapp.com","localhost"]
+ALLOWED_HOSTS = ["emmaphotography.herokuapp.com"]
 
 
 # Application definition
@@ -78,18 +77,27 @@ WSGI_APPLICATION = 'emma.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
+'''
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': str('emma'),
+        'NAME': 'emma',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
 }
-
+'''
+Database = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'd878g8s8aio2m1',
+        'USER': 'xnsrxuwfusbekv',
+        'PASSWORD': 'a97e69de8c5e464af488eb7a2c8e4e4146dbf5413aea11045cd2ac7ac5f3f06b',
+        'HOST': 'ec2-52-71-23-11.compute-1.amazonaws.com',
+        'PORT': '5432',
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
