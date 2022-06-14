@@ -7,6 +7,20 @@
 <div class="contact-head">
  <div class="text-header-contact">CONTACT</div>
 </div>
+<div class="message-error">
+    {% if message %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+    {% if error %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>{{ error }} </strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+</div>
 <div class=" container presentation-auteur">
     <div class="row">
         <div class="col-md-5">
@@ -26,20 +40,15 @@
     <div class="col-md-6">
    
         <div class=" presentation-contact">
-            {% if message %}
-            <div class="alert alert-success text-center">
-                {{ message }}
-            </div>
-            {% endif %}
+            <h4>Photo studio, en extérieur ou dans différents lieux parisiens et banlieue privés</h4>
+            <span class="text-center ">{{presentation.adresse}}</span>
+            <h6>Réservez votre séance photo – Demande d’informations</h6>
+            <p> Pour toute demande de réservation, veuillez remplir ce formulaire. </p>
             {% if error %}
             <div class="alert alert-danger text-center">
                 {{ error }}
             </div>
             {% endif %}
-            <h4>Photo studio, en extérieur ou dans différents lieux parisiens et banlieue privés</h4>
-            <span class="text-center ">{{presentation.adresse}}</span>
-            <h6>Réservez votre séance photo – Demande d’informations</h6>
-            <p> Pour toute demande de réservation, veuillez remplir ce formulaire. </p>
         </div>
    
     </div>

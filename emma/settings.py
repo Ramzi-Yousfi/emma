@@ -29,9 +29,9 @@ SECRET_KEY = 'django-insecure-dhmn&_psv&#t@^6d0&t2a12t^)3n*d2i(ttext)b!n9wj#y0p5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["emmaphotography.herokuapp.com"]
+ALLOWED_HOSTS = []
 
-
+# "emmaphotography.herokuapp.com"
 # Application definition
 
 INSTALLED_APPS = [
@@ -146,11 +146,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Email settings
 # python -m smtpd -n -c DebuggingServer localhost:1025
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = ''
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
+
 
 django_heroku.settings(locals())

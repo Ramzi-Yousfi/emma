@@ -68,8 +68,8 @@ def contact(request):
             'Messages': [
                     {
                         "From": {
-                            "Email": request.POST.get('email'),
-                            "Name": request.POST.get('nom')
+                              "Email": "emm_nuelle@yahoo.fr",
+                              "Name": "emma-phtography"
                         },
                         "To": [
                             {
@@ -77,9 +77,9 @@ def contact(request):
                                 "Name": "Ramzi"
                             }
                         ],
-                        "TemplateID": 3996772,
-                        "TemplateLanguage": True,
-                        "Subject": "sujet[",
+                       	"TemplateID": 4006209,
+			            "TemplateLanguage": True,
+			            "Subject": "[[data:country:""France""]]",
                         "Variables": {
                 "nom":request.POST.get('nom') ,
                 "email": request.POST.get('email') ,
@@ -92,8 +92,9 @@ def contact(request):
             result = mailjet.send.create(data=data)
             print (result.status_code)
             print (result.json())
-
           
+
+            form = ContactForm()
             message = ('Votre message a été envoyé avec succès')
             return render (request ,'contact.html' , {'message': message,'form': form,'presentation': presentation})
         else: 

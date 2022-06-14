@@ -31,6 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+   
     background-image: url("../images/contact-head.jpg");
     background-size: cover;
     background-position: center;
@@ -75,3 +76,9 @@
     
 }
 
+.message-error{
+    position: absolute;
+    top:20vh;
+    right:5%;
+    
+}
