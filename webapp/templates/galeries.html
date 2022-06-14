@@ -3,8 +3,8 @@
 
 {% block content %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/galeries.css' %}">
-<div class="header-galerie" style="background-image: url('{{ galerie.get_background_photo_url }}')">
-    <div class="text-header-gaelerie">
+<div class="header-galerie" style="background-image: url('{{ galerie.background_photo.url }}')">
+    <div class="text-header-gaelerie">l
         {{ galerie.titre}}
     </div>
     
@@ -15,7 +15,7 @@
         {% for galerie_image in galeries_images %}
             <div class="col-md-4  ">
                 <div class="card-galerie">
-                     <img class="img-fluid" src="{{galerie_image.get_photo_url}}" alt="">
+                     <img class="img-fluid" src="{{galerie_image.photo.url}}" alt="">
                 </div>
             </div>
         {% endfor %}

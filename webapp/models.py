@@ -28,7 +28,7 @@ class Publication(models.Model):
 
 class PublicationImage(models.Model):
     publication = models.ForeignKey("Publication",related_name='photos', on_delete=models.CASCADE , blank=True, null=True)
-    photo_url = models.ImageField(upload_to=img_path)
+    photo_url = models.ImageField(upload_to='publication_images/')
     
     @property
     def get_photo_url(self):
@@ -105,7 +105,7 @@ class Presentation(models.Model):
 class Galeries(models.Model):
     titre = models.CharField(max_length=50)
     slug = models.SlugField(blank=True, null=True)
-    background_photo = models.ImageField(upload_to=galeries_path, blank=True, null=True)
+    background_photo = models.ImageField(upload_to='galeries_images/', blank=True, null=True)
     class Meta:
         verbose_name = 'Galerie'
         verbose_name_plural = 'Galeries'
@@ -123,7 +123,7 @@ class Galeries(models.Model):
 
 class GaleriesImage(models.Model):
     galeries = models.ForeignKey("Galeries",related_name='photos', on_delete=models.CASCADE , blank=True, null=True)
-    photo = models.ImageField(upload_to=galeries_path, blank=True, null=True)
+    photo = models.ImageField(upload_to='galeries_images/', blank=True, null=True)
     
     @property
     def get_photo_url(self):
