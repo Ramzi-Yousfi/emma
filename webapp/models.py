@@ -11,8 +11,7 @@ from django.utils.text import slugify
 
 
 # Create your models here.
-img_path = os.path.join(os.path.dirname(__file__), 'static/images/publication_images')
-galeries_path = os.path.join(os.path.dirname(__file__), 'static/images/galeries_images')
+
 class Publication(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField()
@@ -84,7 +83,7 @@ class PresentationCard(models.Model):
         verbose_name_plural = 'PrésentationCards'
     
     def get_photo_url(self):
-        p = Path(self.card_image)
+        p = self.card_image
         return static(p)
 
     def __repr__(self):

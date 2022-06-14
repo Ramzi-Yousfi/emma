@@ -14,7 +14,7 @@ class GaleriesImageInline(admin.StackedInline):
     model = GaleriesImage
     extra = 1
 class GaleriesAdmin(admin.ModelAdmin):
-    exclude= ['slug']
+    
     list_display = ['slug']
     inlines = [GaleriesImageInline]
     class Meta:
