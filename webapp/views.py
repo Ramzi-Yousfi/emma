@@ -19,7 +19,7 @@ def index(request):
 
 
 def publication (request):
-    publications = Publication.objects.all()
+    publications = Publication.objects.all().order_by('-id')
     return render(request, 'publication.html', {'publications': publications})
     
 
@@ -46,7 +46,7 @@ def presentation (request):
 
 
 def galerie(request, slug):
-    galeries_images = galerie= GaleriesImage.objects.filter(galeries__slug=slug)
+    galeries_images = galerie= GaleriesImage.objects.filter(galeries__slug=slug).order_by('-id')
     galerie = Galeries.objects.filter(slug=slug).first()
     return render(request, 'galeries.html', {'galeries_images': galeries_images, 'galerie': galerie})
 

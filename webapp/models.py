@@ -14,10 +14,10 @@ from django.utils.text import slugify
 
 class Publication(models.Model):
     title = models.CharField(max_length=150)
-    description = models.TextField()
+    description = models.TextField(blank=True, null=True)
     link_to = models.URLField(max_length=200, blank=True, null=True)
     link_str = models.CharField(max_length=200, blank=True,null=True)
-    date_published = models.DateField()
+    date_published = models.DateField(default=datetime.now)
     published  = models.BooleanField(default=True)
     
     def __str__(self):

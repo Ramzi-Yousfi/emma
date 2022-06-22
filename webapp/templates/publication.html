@@ -10,7 +10,6 @@
     </div>
     <div class="container">
         {% for publication in publications %}
-            <div class="row"></div>
             <h5 class="card-title">{{ publication.title }}</h5>
             <p class="card-text">{{ publication.description }}</p>
             <a href="{{publication.link_to}}" class="card-url"><p ><i class="las la-link"></i>
@@ -30,13 +29,15 @@
                                 <div class="col-md-4">
                                     <img src="{{photos.photo_url.url}}" class="img-fluid">
                                 </div>
-                            {% elif publication.photos.all.count  > 3 %}
-                                <div class="col-md-3">
-                                    <img src="{{photos.photo_url.url}}" class="img-fluid">
+                            {% elif publication.photos.all.count  == 3 %}
+                            
+                                <div class="col-md-4">
+                                    <img src="{{photos.0.photo_url.url}}" class="img-fluid">
                                 </div>
                             {% else %}
                                 <div class="col-md-3">
                                     <img src="{{photos.photo_url.url}}">
+                                </div>
                             {% endif %}
                         {% endfor %}
                     </div>
