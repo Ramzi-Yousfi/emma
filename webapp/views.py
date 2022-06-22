@@ -68,13 +68,13 @@ def contact(request):
             'Messages': [
                     {
                         "From": {
-                              "Email": "emm_nuelle@yahoo.fr",
-                              "Name": "emma-phtography"
+                              "Email": request.POST.get('email'),
+                              "Name": request.POST.get('nom')
                         },
                         "To": [
                             {
-                                "Email": "ramzi446@hotmail.com",
-                                "Name": "Ramzi"
+                                "Email": "emma.Rivoal.pro@gmail.com",
+                                "Name": "Emma"
                             }
                         ],
                        	"TemplateID": 4006209,
