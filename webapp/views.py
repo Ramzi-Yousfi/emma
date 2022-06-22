@@ -98,6 +98,6 @@ def contact(request):
             message = ('Votre message a été envoyé avec succès')
             return render (request ,'contact.html' , {'message': message,'form': form,'presentation': presentation})
         else: 
-            error = ('Votre message n\'a pas été envoyé merci de vérifier vos informations ou de ressayer ultérieurement')
+            error = ('Votre message n\'a pas pu être envoyé  merci de vérifier vos informations ou de ressayer ultérieurement')
             return render (request ,'contact.html' ,{'error': error ,'form': form ,'presentation': presentation})
     return render(request, 'contact.html', {'form': form,'presentation': presentation})
