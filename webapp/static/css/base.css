@@ -24,9 +24,7 @@ a {
 .menu-humberger{
     display: none;
 }
-.logo img{
-    font-size: 30px;
-}
+
 nav{
     z-index: 100;
 }
@@ -46,6 +44,7 @@ nav{
        
         position: relative;
         top: -10px;
+       
     }
     .nav_links{
         display : flex;
@@ -114,9 +113,11 @@ nav{
     .logo{
        
         position: absolute;
-        left: 20px;
+        left: 10px;
         top: 20px;
+        width: 100px;
     }
+  
     .menu-humberger{
         display: block !important;
         color: rgb(255, 255, 255);
