@@ -8,6 +8,9 @@ from pathlib import Path
 from django.templatetags.static import static
 from datetime import datetime
 from django.utils.text import slugify
+from django.dispatch import receiver
+
+
 
 
 # Create your models here.
@@ -39,7 +42,9 @@ class PublicationImage(models.Model):
         os.remove(self.photo_url.path)
         super().delete()
    
-
+    @receiver(models.signals.pre_delete, sender= photo_url)
+    def remove_file_from_s3(sender, instance, using, **kwargs):
+       instance.image_file.delete(save=False)
 
 class Contact(models.Model):
     nom = models.CharField(max_length=255)
@@ -105,6 +110,9 @@ class Presentation(models.Model):
     
     def __repr__(self):
         return self.description_one
+    
+ 
+
 
 class Galeries(models.Model):
     titre = models.CharField(max_length=50)
@@ -138,3 +146,4 @@ class GaleriesImage(models.Model):
     def delete(self ,using=None, keep_parents=False):
         os.remove(self.photo.path)
         super().delete()
+    

@@ -1,5 +1,6 @@
 
 from distutils.log import error
+import django
 from django.shortcuts import redirect, render
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import Contact
@@ -9,6 +10,11 @@ from .models import *
 from django.contrib import messages
 import os
 
+
+
+def base(request):
+    submenu = Galeries.objects.all()
+    return  {'submenu': submenu}
 
 
 def index(request):

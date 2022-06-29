@@ -25,18 +25,9 @@
                 <li class="galeries ">
                     <a  class="isDisabled sub_btn" >GALERIES <i class="las la-plus"></i></a>
                     <ul class="sub showing">
-                
-                        <li><a href="/galerie/femmes">FEMMES</a></li>
-                        <li><a href="/galerie/hommes">HOMMES</a></li>
-                        <li><a href="/galerie/beaute-clause-ups">Beauté + CLOSE UPS</a></li>
-                        <li><a href="/galerie/test-agence">TEST AGENCE</a></li>
-                        <li><a href="/galerie/corporate">CORPORATE</a></li>
-                        <li><a href="/galerie/exterieur">Extérieur</a></li>
-                        <li><a href="/galerie/duos">duos</a></li>
-                        <li><a href="/galerie/sport">sport</a></li>
-                        <li><a href="/galerie/createurs">créateurs</a></li>
-                        <li><a href="/galerie/concerts">concerts</a></li>
-
+                        {% for item in submenu %}
+                        <li><a href="/galerie/{{item.slug}}">{{item.titre}}</a></li>
+                        {% endfor %}
                     </ul>
                 </li>
                 <li><a href="/presentation">PRESTATIONS </a></li>
