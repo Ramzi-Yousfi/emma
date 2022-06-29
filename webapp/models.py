@@ -9,7 +9,9 @@ from django.templatetags.static import static
 from datetime import datetime
 from django.utils.text import slugify
 from django.dispatch import receiver
-
+from django.conf import settings 
+import boto3   
+from django.contrib.admin import ModelAdmin
 
 
 
@@ -38,13 +40,12 @@ class PublicationImage(models.Model):
         path = (p.parts[-3]+'/'+p.parts[-2] +'/'+ p.name)
         return static(path)
 
-    def delete(self ,using=None, keep_parents=False):
-        os.remove(self.photo_url.path)
+    def delete(self):
+        s3 = boto3.client('s3')
+        s3.delete_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Key=f"media/{self.photo_url.path}")
         super().delete()
-   
-    @receiver(models.signals.pre_delete, sender= photo_url)
-    def remove_file_from_s3(sender, instance, using, **kwargs):
-       instance.image_file.delete(save=False)
+        return  super().delete()
+
 
 class Contact(models.Model):
     nom = models.CharField(max_length=255)
