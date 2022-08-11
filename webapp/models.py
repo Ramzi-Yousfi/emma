@@ -144,7 +144,7 @@ class GaleriesImage(models.Model):
         path = (p.parts[-3]+'/'+p.parts[-2] +'/'+ p.name)
         return static(path)
 
-    def delete(self ,using=None, keep_parents=False):
-        os.remove(self.photo.path)
-        super().delete()
+
+    
+    
     

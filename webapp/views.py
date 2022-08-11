@@ -48,12 +48,14 @@ def livreAdd(request):
 def presentation (request):
     cards = PresentationCard.objects.all()
     presentation = Presentation.objects.first()
+    
     return render(request, 'presentation.html', {'cards': cards, 'presentation': presentation})
 
 
 def galerie(request, slug):
     galeries_images = galerie= GaleriesImage.objects.filter(galeries__slug=slug).order_by('-id')
     galerie = Galeries.objects.filter(slug=slug).first()
+    print(GaleriesImage.photo)
     return render(request, 'galeries.html', {'galeries_images': galeries_images, 'galerie': galerie})
 
 
