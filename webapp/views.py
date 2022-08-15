@@ -30,7 +30,7 @@ def publication (request):
     
 
 def livre(request):
-    comments  = Livre.objects.all().ordref_by('-id')
+    comments  = Livre.objects.all().order_by('-id')
     return render(request, 'livre_or/index.html',{'comments': comments}) 
 
 
