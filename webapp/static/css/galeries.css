@@ -36,8 +36,8 @@
 
 .disabledaa {
    
-    color: rgb(255, 255, 255);
-    background-color: black;
+    color: rgb(255, 255, 255) !important;
+    background-color: black !important;
     pointer-events: none;
   }
 .nav-page{

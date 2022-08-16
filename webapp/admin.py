@@ -16,12 +16,11 @@ class GaleriesImageInline(admin.StackedInline):
     model = GaleriesImage
     extra = 1
     actions=None
-    print(model)
     def has_change_permission(self, request, obj) -> bool:
         
         return None
     
-    fields = ( 'image_tag', )
+    fields = ( 'image_tag','photo' )
     readonly_fields = ('image_tag',)
 
    
