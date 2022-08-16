@@ -9,6 +9,8 @@ from django.core.mail import send_mail
 from .models import *
 from django.contrib import messages
 import os
+from django.core.paginator import Paginator
+
 
 
 
@@ -55,8 +57,11 @@ def presentation (request):
 def galerie(request, slug):
     galeries_images = galerie= GaleriesImage.objects.filter(galeries__slug=slug).order_by('-id')
     galerie = Galeries.objects.filter(slug=slug).first()
-    print(GaleriesImage.photo)
-    return render(request, 'galeries.html', {'galeries_images': galeries_images, 'galerie': galerie})
+    page = request.GET.get('page')
+    paginator = Paginator(galeries_images, 9)
+    galeries_images = paginator.get_page(page)
+
+    return render(request, 'galeries.html', {'galeries_images': galeries_images, 'galerie': galerie,'pages':page})
 
 
 
@@ -109,3 +114,5 @@ def contact(request):
             error = ('Votre message n\'a pas pu être envoyé  merci de vérifier vos informations ou de ressayer ultérieurement')
             return render (request ,'contact.html' ,{'error': error ,'form': form ,'presentation': presentation})
     return render(request, 'contact.html', {'form': form,'presentation': presentation})
+
+

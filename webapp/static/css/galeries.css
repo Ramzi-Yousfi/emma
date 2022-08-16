@@ -28,6 +28,27 @@
     -webkit-text-stroke: 2px;
     -webkit-text-stroke-color: rgb(50, 49, 48);
 }
+.pagination  a{
+    text-decoration: none;
+    color: black;
+}
+
+a.disabled {
+   
+    color: rgb(255, 255, 255);
+    background-color: black;
+   
+    pointer-events: none;
+  }
+.nav-page{
+    width: 100%;
+    height: auto;
+    bottom: 10vh;
+    display: flex;
+    justify-content: center;
+}
+
+
 @media screen and (min-width: 768px){
     .nav-shower{
         z-index:0;

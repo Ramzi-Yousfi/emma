@@ -13,15 +13,50 @@
 <div class="container">
     <div class="row">
         {% for galerie_image in galeries_images %}
-            <div class="col-md-4 pt-2 img-galerie">
-                <div class="card-galerie">
-                     <img class="img-fluid" src="{{galerie_image.photo.url}}" alt="">
+            {% if galerie_image.photo %}
+                <div class="col-md-4 pt-2 img-galerie">
+                    <div class="card-galerie">
+                        <img class="img-fluid" src="{{galerie_image.photo.url}}" alt="">
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
+
     </div>
    <br>
+ 
+{% if galeries_images.paginator.page_range|length > 1  %}
+   <nav class="nav-page">
+    <ul class="pagination">
+        {% if galeries_images.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ galeries_images.previous_page_number }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+      {% endif %}
+      {% for i in galeries_images.paginator.page_range %}
+                {% ifequal i galeries_images.number %}
+                    <li class="page-item"><a class="page-link disabled" href=""> {{i}}</a></li>
+                {% else %}
+                    <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
+                {% endifequal %}
+      {% endfor %}
 
+      <li class="page-item">
+        {% if galeries_images.has_next %} 
+        <a class="page-link" href="?page={{ galeries_images.next_page_number }}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+        {% endif %}
+      </li>
+    </ul>
+  </nav>
+
+<br/>
+{% endif %}
 </div>
 
 {% endblock %}

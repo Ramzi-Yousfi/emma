@@ -2,8 +2,7 @@ from email.mime import image
 from importlib.resources import path
 from pydoc import describe
 from django.db import models
-import os 
-import pprint
+
 from pathlib import Path
 from django.templatetags.static import static
 from datetime import datetime
@@ -12,9 +11,12 @@ from django.dispatch import receiver
 from django.conf import settings 
 import boto3   
 from django.contrib.admin import ModelAdmin
-
-
-
+from PIL import Image
+from io import BytesIO
+from django.core.files import File
+from django_resized import ResizedImageField
+from django.utils.html import mark_safe
+from django.utils.html import format_html
 # Create your models here.
 
 class Publication(models.Model):
@@ -112,7 +114,6 @@ class Presentation(models.Model):
     def __repr__(self):
         return self.description_one
     
- 
 
 
 class Galeries(models.Model):
@@ -132,19 +133,46 @@ class Galeries(models.Model):
         p = Path(self.background_photo.path) 
         path = (p.parts[-3]+'/'+p.parts[-2] +'/'+ p.name)
         return static(path)
+    
+    def image_tag(self):
+        from django.utils.html import escape
+        return format_html( u'<img src="%s" height="80" />' % escape(self.background_photo.url))
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
 
 
 class GaleriesImage(models.Model):
     galeries = models.ForeignKey("Galeries",related_name='photos', on_delete=models.CASCADE , blank=True, null=True)
-    photo = models.ImageField(upload_to='galeries_images/', blank=True, null=True)
+    photo = ResizedImageField(size=[None, 500],upload_to='galeries_images/', blank=True, null=True)
     
+
+    # before saving the instance we’re reducing the image
+    def save(self, *args, **kwargs):
+        new_image = self.reduce_image_size(self.photo)
+        self.photo = new_image
+        super().save(*args, **kwargs)
+    def reduce_image_size(self, photo):
+        img = Image.open(photo)
+        thumb_io = BytesIO()
+        img.save(thumb_io, 'jpeg', quality=50)
+        new_image = File(thumb_io, name=photo.name)
+        return new_image
+
     @property
     def get_photo_url(self):
         p = Path(self.photo.path) 
         path = (p.parts[-3]+'/'+p.parts[-2] +'/'+ p.name)
         return static(path)
 
+    def image_tag(self):
+        from django.utils.html import escape
+        return format_html( u'<img src="%s" height="80" />' % escape(self.photo.url))
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+
 
     
-    
+@receiver(models.signals.post_delete, sender=GaleriesImage)
+def remove_file_from_s3(sender, instance, using, **kwargs):
+    instance.photo.delete(save=False)    
     
