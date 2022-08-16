@@ -31,13 +31,13 @@
 .pagination  a{
     text-decoration: none;
     color: black;
+    background-color: white;
 }
 
-a.disabled {
+.disabledaa {
    
     color: rgb(255, 255, 255);
     background-color: black;
-   
     pointer-events: none;
   }
 .nav-page{

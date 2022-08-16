@@ -38,7 +38,7 @@
       {% endif %}
       {% for i in galeries_images.paginator.page_range %}
                 {% ifequal i galeries_images.number %}
-                    <li class="page-item"><a class="page-link disabled" href=""> {{i}}</a></li>
+                    <li class="page-item"><a class="page-link disabledaa" href=""> {{i}}</a></li>
                 {% else %}
                     <li class="page-item"><a class="page-link" href="?page={{i}}">{{i}}</a></li>
                 {% endifequal %}
