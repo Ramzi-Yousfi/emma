@@ -3,45 +3,55 @@
 
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/publication.css' %}">
-<div>
-    <div class="heea">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/publication.css' %}">
+    <div>
+        <div class="heea">
 
-    </div>
-    <div class="container">
-        {% for publication in publications %}
-            <h5 class="card-title">{{ publication.title }}</h5>
-            <p class="card-text">{{ publication.description }}</p>
-            <a href="{{publication.link_to}}" class="card-url"><p ><i class="las la-link"></i>
-                {{ publication.link_str  }}</p></a>
-                    <div class="row text-center publication-image">
-                        {% for photos in publication.photos.all %}
-                            
-                            {% if publication.photos.all.count  == 1 %}
-                                <div class="col-md-12">
+        </div>
+        <div class="container">
+            {% for publication in publications %}
+                <h5 class="card-title">{{ publication.title }}</h5>
+                <p class="card-text">{{ publication.description }}</p>
+                <a href="{{ publication.link_to }}" class="card-url"><p><i class="las la-link"></i>
+                    {{ publication.link_str }}</p></a>
+                <div class="row text-center publication-image">
+                    {% for photos in publication.photos.all %}
+
+                        {% if publication.photos.all.count  == 1 %}
+                            <div class="col-md-12">
+                                <div class="card-galerie">
                                     <img src="{{ photos.photo_url.url }}" class="img-fluid" alt="Responsive image">
                                 </div>
-                            {% elif publication.photos.all.count  ==  2 %}
-                                <div class="col-md-6">
-                                    <img src="{{photos.get_photo_url}}" >
+                            </div>
+                        {% elif publication.photos.all.count  ==  2 %}
+                            <div class="col-md-6">
+                                <div class="card-galerie">
+                                    <img src="{{ photos.get_photo_url }}" class="img-fluid">
                                 </div>
-                                {% elif publication.photos.all.count  == 6 %}
-                                <div class="col-md-4">
-                                    <img src="{{photos.photo_url.url}}" class="img-fluid">
+                            </div>
+                        {% elif publication.photos.all.count  == 6 %}
+                            <div class="col-md-4">
+                                <div class="card-galerie">
+                                    <img src="{{ photos.photo_url.url }}" class="img-fluid">
                                 </div>
-                            {% elif publication.photos.all.count  == 3 %}
-                                <div class="col-md-4">
-                                    <img src="{{photos.photo_url.url}}" class="img-fluid">
+                            </div>
+                        {% elif publication.photos.all.count  == 3 %}
+                            <div class="col-md-4">
+                                <div class="card-galerie">
+                                    <img src="{{ photos.photo_url.url }}" class="img-fluid">
                                 </div>
-                            {% else %}
-                                <div class="col-md-3">
-                                    <img src="{{photos.photo_url.url}}">
+                            </div>
+                        {% else %}
+                            <div class="col-md-3">
+                                <div class="card-galerie">
+                                    <img src="{{ photos.photo_url.url }}" class="img-fluid">
                                 </div>
-                            {% endif %}
-                        {% endfor %}
-                    </div>
-        {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
     </div>
-</div>
-    
+
 {% endblock %}

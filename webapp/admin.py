@@ -5,6 +5,9 @@ from .models import *
 # Register your models here.
 class PublicationImageInline(admin.StackedInline):
     model = PublicationImage
+
+    fields = ( 'image_tag','photo_url' )
+    readonly_fields = ('image_tag',)
     extra = 1
     actions=None
 class PublicationAdmin(admin.ModelAdmin):

@@ -35,7 +35,24 @@ class Publication(models.Model):
 class PublicationImage(models.Model):
     publication = models.ForeignKey("Publication",related_name='photos', on_delete=models.CASCADE , blank=True, null=True)
     photo_url = models.ImageField(upload_to='publication_images/')
-    
+
+    def save(self, *args, **kwargs):
+        new_image = self.reduce_image_size(self.photo_url)
+        self.photo = new_image
+        super().save(*args, **kwargs)
+    def reduce_image_size(self, photo_url):
+        img = Image.open(photo_url)
+        thumb_io = BytesIO()
+        img.save(thumb_io, 'jpeg', quality=50)
+        new_image = File(thumb_io, name=photo_url.name)
+        return new_image
+
+    def image_tag(self):
+        from django.utils.html import escape
+        return format_html( u'<img src="%s" height="80" />' % escape(self.photo_url.url))
+    image_tag.short_description = 'Image'
+    image_tag.allow_tags = True
+
     @property
     def get_photo_url(self):
         p = Path(self.photo_url.path) 
@@ -47,6 +64,10 @@ class PublicationImage(models.Model):
         s3.delete_object(Bucket=settings.AWS_STORAGE_BUCKET_NAME, Key=f"media/{self.photo_url.path}")
         super().delete()
         return  super().delete()
+
+@receiver(models.signals.post_delete, sender=PublicationImage)
+def remove_file_from_s3(sender, instance, using, **kwargs):
+    instance.photo.delete(save=False)
 
 
 class Contact(models.Model):

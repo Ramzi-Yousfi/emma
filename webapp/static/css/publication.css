@@ -1,7 +1,4 @@
 .publication-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
     padding-bottom: 5vh;
 }
 .card-title{
@@ -21,4 +18,11 @@
 }
 .card-url:hover{
     color: #863971;
+}
+.card-galerie{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
 }
