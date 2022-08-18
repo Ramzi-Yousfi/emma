@@ -26,3 +26,23 @@
     height: 100%;
     width: 100%;
 }
+
+.pagination  a{
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
+
+.disabledaa {
+   
+    color: rgb(255, 255, 255) !important;
+    background-color: black !important;
+    pointer-events: none;
+  }
+.nav-page{
+    width: 100%;
+    height: auto;
+    bottom: 10vh;
+    display: flex;
+    justify-content: center;
+}

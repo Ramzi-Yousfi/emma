@@ -28,7 +28,10 @@ def index(request):
 
 def publication (request):
     publications = Publication.objects.all().order_by('-id')
-    return render(request, 'publication.html', {'publications': publications})
+    paginator = Paginator(publications, 3 )# Show 25 contacts per page
+    page = request.GET.get('page')
+    publication = paginator.get_page(page)
+    return render(request, 'publication.html', {'publications': publication})
     
 
 def livre(request):
@@ -55,7 +58,7 @@ def presentation (request):
 
 
 def galerie(request, slug):
-    galeries_images = galerie= GaleriesImage.objects.filter(galeries__slug=slug).order_by('-id')
+    galeries_images = GaleriesImage.objects.filter(galeries__slug=slug).order_by('-id')
     galerie = Galeries.objects.filter(slug=slug).first()
     page = request.GET.get('page')
     paginator = Paginator(galeries_images, 9)
