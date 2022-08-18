@@ -12,8 +12,12 @@
             {% for publication in publications %}
                 <h5 class="card-title">{{ publication.title }}</h5>
                 <p class="card-text">{{ publication.description }}</p>
+                {% if publication.link_to  %}
+                    <a href="{{ publication.link_to }}" class="btn btn-primary">Lien vers la publication</a>
+                {% endif %}
                 <a href="{{ publication.link_to }}" class="card-url"><p><i class="las la-link"></i>
                     {{ publication.link_str }}</p></a>
+                {% endif %}
                 <div class="row text-center publication-image">
                     {% for photos in publication.photos.all %}
 
